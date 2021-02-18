@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 
 class Queue{
@@ -44,9 +45,9 @@ class Queue{
     public void printQueue(){
         System.out.println(front + " ~ " + rear);
 
-        for(int i = front; i < rear; i++){
-            System.out.print(array[i] + " ");
-        }
+        IntStream.range(front, rear).forEach((int i)
+                -> System.out.print(array[i] + " "));
+
         System.out.println();
     }
 }
@@ -69,12 +70,12 @@ public class Main {
             System.out.print("what do you want? ");
             check = input.nextInt();
 
+            // 재시작
             if(check == 0){
                 System.out.println("Init queue and restart");
                 System.out.print("Max queueSize: ");
                 qSize = input.nextInt();
 
-                // 큐 생성 & 초기화
                 queue = new Queue(0, 0, qSize);
             } // queue 삽입
             else if(check == 1) {
